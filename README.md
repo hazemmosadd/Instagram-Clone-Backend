@@ -26,7 +26,37 @@ This project aims to replicate the core functionality of Instagram's backend usi
 ## Installation & Setup
 
 ### Prerequisites
-- Node.js
-- PostgreSQL
 
-... (and so on)
+- **Node.js**: Ensure you have Node.js installed on your machine. Visit [Node.js](https://nodejs.org/en/download/) for installation instructions.
+- **PostgreSQL**: Ensure you have PostgreSQL installed and running. Visit [PostgreSQL](https://www.postgresql.org/download/) for installation instructions.
+
+### Steps
+
+1. **Clone the Repository**
+    ```bash
+    git clone https://github.com/your_username/instagram-backend-clone.git
+    ```
+
+2. **Navigate to the Directory**
+    ```bash
+    cd instagram-backend-clone
+    ```
+
+3. **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+4. **Create `.env` File**
+    Create a `.env` file in the root directory and populate it with your database and secret information.
+    ```makefile
+    DB_USER=your_db_user
+    DB_PASSWORD=your_db_password
+    SECRET=your_jwt_secret
+    ```
+
+5. **Start the Server**
+    ```bash
+    npm start
+    ```
+
