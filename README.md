@@ -1,62 +1,68 @@
-# Instagram Backend Clone (In Progress)
 
-## Overview
-This project aims to replicate the core functionality of Instagram's backend using Node.js and PostgreSQL. The project is currently under development.
+# 📸 Instagram Backend Clone (In Progress) 🚧
 
-## Features (Planned)
-- [x] User Signup
-- [x] User Authentication using sessions and cookies
-- [ ] Image Uploads via Multer
-- [ ] Real-time notifications using WebSockets
-- [ ] Post CRUD operations
-- [ ] User Follow/Unfollow mechanism
-- [ ] Comments and Likes
-- [ ] Feed Generation Algorithm
-- [ ] Pagination and Sorting
+## 🌐 Overview
+This project aims to replicate the core functionality of Instagram's backend using Node.js and PostgreSQL. 🛠 The project is currently under development. 🔧
 
-## Tech Stack
-- **Node.js**: Server-side logic
-- **Express**: Web application framework
-- **PostgreSQL**: Database
-- **Raw SQL**: will not use ORM for this app
-- **Socket.io**: Real-time updates (Planned)
-- **Multer**: File uploads (Planned)
-- **Redis**: Caching (Planned)
+## 🌟 Features (Planned)
+- [x] 👤 User Signup
+- [x] 🛡️ User Authentication (Sessions & Cookies)
+- [ ] 📤 Image Uploads (Multer)
+- [ ] 🛎️ Real-time Notifications (WebSockets)
+- [ ] ✏️ Post CRUD operations
+- [ ] 🤝 User Follow/Unfollow Mechanism
+- [ ] 💬 Comments and 👍 Likes
+- [ ] 📰 Feed Generation Algorithm
+- [ ] 📜 Pagination and Sorting
 
-## Installation & Setup
+## 📚 Tech Stack
+- **Node.js**: 🚀 Server-side logic
+- **Express**: 🕸️ Web application framework
+- **PostgreSQL**: 🗃️ Database
+- **Raw SQL**: ❌ No ORM
+- **Socket.io**: 🌐 Real-time updates (Planned)
+- **Multer**: 📦 File uploads (Planned)
+- **Redis**: 🎯 Caching (Planned)
 
-### Prerequisites
+## 🚀 Installation & Setup
 
-- **Node.js**: Ensure you have Node.js installed on your machine. Visit [Node.js](https://nodejs.org/en/download/) for installation instructions.
-- **PostgreSQL**: Ensure you have PostgreSQL installed and running. Visit [PostgreSQL](https://www.postgresql.org/download/) for installation instructions.
+### 📋 Prerequisites
 
-### Steps
+- **Node.js**: Make sure Node.js is installed. Visit [Node.js](https://nodejs.org/en/download/) for instructions.
+- **PostgreSQL**: PostgreSQL should be installed and running. Check out [PostgreSQL](https://www.postgresql.org/download/) for guidelines.
 
-1. **Clone the Repository**
+### 🛠️ Steps
+
+1. **👯‍♀️ Clone the Repository**
     ```bash
-    git clone https://github.com/your_username/instagram-backend-clone.git
+    git clone https://github.com/hazemmosadd/Instagram-Clone-Backend.git
     ```
 
-2. **Navigate to the Directory**
+2. **📂 Navigate to the Directory**
     ```bash
-    cd instagram-backend-clone
+    cd Instagram-Clone-Backend
     ```
 
-3. **Install Dependencies**
+3. **📦 Install Dependencies**
     ```bash
     npm install
     ```
 
-4. **Create `.env` File**
+4. **🔒 Create `.env` File**
     Create a `.env` file in the root directory and populate it with your database and secret information.
     ```makefile
-    DB_USER=your_db_user
-    DB_PASSWORD=your_db_password
-    SECRET=your_jwt_secret
+    DB_HOST=....
+    DB_PORT=...
+    DB_USER=...
+    DB_PASSWORD=...
+    DB_NAME=...
+    SERVER_PORT=...
     ```
 
-5. **Start the Server**
+5. **🔥 Start the Server**
     ```bash
-    npm start
+    node app.js
     ```
+
+---
 
