@@ -14,11 +14,10 @@ class UserModel {
     return res[0];
   }
 
-  static async getUser(userName, password) {
-    const query = `SELECT * FROM users WHERE username = $1 AND password = $2`;
-    const values = [userName, password];
+  static async getUser(userName) {
+    const query = `SELECT * FROM users WHERE username = $1 `;
+    const values = [userName];
     const res = await executeQuery(query, values);
-    console.log(res);
     return res;
   }
 }
