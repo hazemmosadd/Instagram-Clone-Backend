@@ -6,6 +6,8 @@ const express = require("express");
 const pgSession = require("connect-pg-simple")(session);
 const pgPool = require("./config/database");
 const cors = require("cors");
+const {checkSignIn} = require('./middlewares/checkSignIn.js')
+
 
 // initialize express app
 const app = express();
@@ -19,9 +21,11 @@ app.use(
   })
 );
 
+
 // Middlewares
 // Use the built-in JSON middleware to parse JSON request bodies
 app.use(express.json());
+//sessions 
 app.use(
   session({
     store: new pgSession({
@@ -34,7 +38,7 @@ app.use(
     cookie: { secure: false }, // Use 'true' if your app runs on HTTPS
   })
 );
-app.use("/auth", authRoutes);
+app.use("/auth" ,authRoutes);
 
 PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {

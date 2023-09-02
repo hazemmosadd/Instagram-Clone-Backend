@@ -4,17 +4,19 @@
 // bad request validation is nessecary even if its going to happen in the front end
 
 const authServices = require("../services/authServices");
+const HTTP_STATUS_CODES = require('../config/statusCodes');
+
 
 const createUser = async (req, res) => {
   try {
     const result = await authServices.createUser(req.body);
     if (result.created) {
-      return res.status(201).json({ success: true, message: "User created successfully", data: { id: result.userCreated.id, username: result.userCreated.username } });
+      return res.status(HTTP_STATUS_CODES.CREATED).json({ success: true, message: "User created successfully", data: { id: result.userCreated.id, username: result.userCreated.username } });
     } else {
-      return res.status(400).json({ success: false, message: `Failed to create user: ${result.errorMessage}` });
+      return res.status(HTTP_STATUS_CODES.BAD_REQUEST).json({ success: false, message: `Failed to create user: ${result.errorMessage}` });
     }
   } catch (error) {
-    return res.status(500).json({ success: false, message: "Internal Server Error" });
+    return res.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ success: false, message: "Internal Server Error" });
   }
 };
 
@@ -25,23 +27,23 @@ const logInUser = async (req, res) => {
       console.log(req.session);
       req.session.userName = req.body.userName;
       console.log(req.session);
-      return res.status(200).json({ success: true, message: "User authenticated" });
+      return res.status(HTTP_STATUS_CODES.OK).json({ success: true, message: "User authenticated" });
     } else {
-      return res.status(401).json({
+      return res.status(HTTP_STATUS_CODES.UNAUTHORIZED).json({
         success: false,
         message: `Authentication failed: ${result.errorMessage}`,
       });
     }
   } catch (error) {
-    return res.status(500).json({ success: false, message: "Internal Server Error" });
+    return res.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ success: false, message: "Internal Server Error" });
   }
 };
 
 const validateUserSession = (req, res) => {
   if (req.session.userName) {
-    return res.status(200).json({ isLoggedIn: true });
+    return res.status(HTTP_STATUS_CODES.OK).json({ isLoggedIn: true });
   } else {
-    return res.status(200).json({ isLoggedIn: false });
+    return res.status(HTTP_STATUS_CODES.OK).json({ isLoggedIn: false });
   }
 };
 

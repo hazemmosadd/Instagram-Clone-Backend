@@ -7,8 +7,8 @@ poolConnectionData = {
   database: process.env.DB_NAME ,
   password: process.env.DB_PASSWORD ,
   port: process.env.DB_PORT ,
-  max: 20, // maximum size of the pool
-  idleTimeoutMillis: 30000 // time a client may sit idle
+  ax: process.env.DB_MAX_POOL_SIZE, // maximum size of the pool
+  idleTimeoutMillis: process.env.DB_IDLE_TIMEOUT, // time a client may sit idle
 };
 
 const pool = new Pool(poolConnectionData);
