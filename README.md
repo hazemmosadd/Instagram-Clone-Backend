@@ -1,21 +1,21 @@
-Certainly! A well-structured README file is crucial for any project, especially for something as complex as a backend system for an Instagram clone. Here's a revamped version of your README that includes additional sections, badges, and a more detailed explanation of each component.
 
----
-
-# 📸 Instagram Clone (Backend) 🚧
+# 📸 Instagram Clone (Backend In Progress) 🚧
 
 ![Status](https://img.shields.io/badge/status-in--progress-yellow)
 ![Language](https://img.shields.io/badge/language-Node.js-brightgreen)
 ![Database](https://img.shields.io/badge/database-PostgreSQL-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+> 🌟 **Note**: This repository contains the backend code. For the frontend React application, please visit [Instagram-Clone-Frontend](https://github.com/hazemmosadd/Instagram-Clone-Frontend).
+
 ## 🌐 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Installation & Setup](#installation--setup)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Installation & Setup](#-installation--setup)
+- [License](#-license)
+
 
 
 ## 🌐 Overview

@@ -38,6 +38,7 @@ class UserModel {
     const query = `SELECT avatar from users WHERE username = $1`;
     const values = [userName];
     const res = await executeQuery(query, values);
+    console.log(res);
     return res;
   };
 
