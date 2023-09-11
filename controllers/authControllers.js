@@ -10,7 +10,7 @@ const HTTP_STATUS_CODES = require('../config/statusCodes');
 const createUser = async (req, res) => {
   try {
     const result = await authServices.createUser(req.body);
-    if (result.created) {
+    if (result.isSuccess) {
       return res.status(HTTP_STATUS_CODES.CREATED).json({ success: true, message: "User created successfully", data: { id: result.userCreated.id, username: result.userCreated.username } });
     } else {
       return res.status(HTTP_STATUS_CODES.BAD_REQUEST).json({ success: false, message: `Failed to create user: ${result.errorMessage}` });
@@ -21,9 +21,10 @@ const createUser = async (req, res) => {
 };
 
 const logInUser = async (req, res) => {
+  console.log(req.session);
   try {
     const result = await authServices.authenticateUser(req.body.userName, req.body.password);
-    if (result.isAuthenticated) {
+    if (result.isSuccess) {
       console.log(req.session);
       req.session.userName = req.body.userName;
       console.log(req.session);

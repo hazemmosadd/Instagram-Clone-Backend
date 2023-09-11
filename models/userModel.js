@@ -1,6 +1,6 @@
 // models/userModel.js
 
-const executeQuery = require("../utils/dbPool");
+const { executeQuery } = require("../utils/dbPool");
 
 class UserModel {
   static async createUser(userData) {
@@ -14,12 +14,33 @@ class UserModel {
     return res[0];
   }
 
-  static async getUser(userName) {
+  static async findByUserName(userName) {
     const query = `SELECT * FROM users WHERE username = $1 `;
     const values = [userName];
     const res = await executeQuery(query, values);
     return res;
   }
+
+  static findProfileDataByUsername = async (userName) => {
+    const query = `SELECT id, username, bio, avatar, fullname,
+    (SELECT count(*) FROM followers WHERE followers.followed_id = users.id) AS followers,
+    (SELECT count(*) FROM followers WHERE followers.follower_id = users.id) AS following,
+    (SELECT count(*) FROM posts WHERE posts.user_id = users.id) AS posts
+     FROM users
+     WHERE users.username = $1; `;
+    const values = [userName];
+    const res = await executeQuery(query, values);
+    console.log(res);
+    return res;
+  };
+
+  static findUserAvatar = async (userName) => {
+    const query = `SELECT avatar from users WHERE username = $1`;
+    const values = [userName];
+    const res = await executeQuery(query, values);
+    return res;
+  };
+
 }
 
 module.exports = UserModel;
@@ -39,6 +60,6 @@ create table users( id SERIAL PRIMARY KEY  ,
 
 2
 ALTER TABLE users ADD COLUMN fullName varchar(60) NOT NULL 
-
+  
 
                   */

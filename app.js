@@ -12,7 +12,8 @@ const {checkSignIn} = require('./middlewares/checkSignIn.js')
 // initialize express app
 const app = express();
 // Require Routes (Functionality-Based Routing (e.g., /auth/login, /posts/create))
-authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routes/authRoutes");
+const profileRoutes = require('./routes/profileRoutes')
 
 app.use(
   cors({
@@ -20,10 +21,6 @@ app.use(
     credentials: true, // important
   })
 );
-
-
-// Middlewares
-// Use the built-in JSON middleware to parse JSON request bodies
 app.use(express.json());
 //sessions 
 app.use(
@@ -39,6 +36,7 @@ app.use(
   })
 );
 app.use("/auth" ,authRoutes);
+app.use('/profile' , profileRoutes)
 
 PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {
