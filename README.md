@@ -1,8 +1,9 @@
 
+
 # 📸 Instagram Clone (Backend In Progress) 🚧
 
 ![Status](https://img.shields.io/badge/status-in--progress-yellow)
-![Language](https://img.shields.io/badge/language-Node.js-brightgreen)
+![Language](https://img.shields.io/badge/language-JavaScript%20(Node.js)-brightgreen)
 ![Database](https://img.shields.io/badge/database-PostgreSQL-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -16,15 +17,14 @@
 - [Installation & Setup](#-installation--setup)
 - [License](#-license)
 
-
-
 ## 🌐 Overview
-This project aims to replicate the core functionalities of Instagram's backend. It serves as a comprehensive guide for understanding how the backend of a social media platform like Instagram operates. Whether you're a beginner looking to understand backend development or an experienced developer seeking a refresher, this project has something for you.
+This project aims to replicate the core functionalities of Instagram's backend. It serves as a comprehensive guide for understanding how the backend of a social media platform like Instagram operates. Whether you're a beginner looking to grasp backend development or an experienced developer seeking a refresher, this project has something to offer.
 
 ## 🌟 Features
 - [x] 👤 User Creation
 - [x] 🛡️ User Sign-in
 - [x] 📌 Retrieval of Key User Data (Avatar, Followers, Posts, Following List)
+- [x] 🗂️ Post Retrieval Based on Profile Privacy (Public, Private)
 - [ ] 📸 Image Uploads
 - [ ] 🛎️ Real-time Notifications
 - [ ] ✏️ Post CRUD Operations
@@ -35,7 +35,7 @@ This project aims to replicate the core functionalities of Instagram's backend. 
 - [ ] 🎯 Caching with Redis
 
 ## 🚀 Tech Stack
-- **Node.js**: Server-side Logic
+- **JavaScript (Node.js)**: Server-side Logic
 - **Express**: Web Framework
 - **PostgreSQL**: Database
 - **Raw SQL**: No ORM
@@ -43,12 +43,12 @@ This project aims to replicate the core functionalities of Instagram's backend. 
 - **Joi**: Data Validation
 
 ## 📁 Project Structure
-- **config**: Contains configuration files like database connection settings and HTTP status codes.
-- **controllers**: Houses the logic for handling client requests.
-- **middlewares**: Includes middleware functions for tasks like session validation.
-- **models**: Contains the data models and database queries.
+- **config**: Contains configuration files such as database connection settings and HTTP status codes.
+- **controllers**: Holds the logic for handling client requests.
+- **middlewares**: Incorporates middleware functions for tasks like session validation.
+- **models**: Features the data models and database queries.
 - **routes**: Manages the application routes.
-- **services**: Holds the business logic used in controllers.
+- **services**: Contains the business logic utilized in controllers.
 - **utils**: Utility functions for tasks like password hashing and data validation.
 
 > 📝 **Note**: The project is still under development. More features and improvements are coming soon.
@@ -56,7 +56,7 @@ This project aims to replicate the core functionalities of Instagram's backend. 
 ## 🛠️ Installation & Setup
 
 ### 📋 Prerequisites
-- **Node.js**: [Download and Install](https://nodejs.org/en/download/)
+- **JavaScript (Node.js)**: [Download and Install](https://nodejs.org/en/download/)
 - **PostgreSQL**: [Download and Install](https://www.postgresql.org/download/)
 
 ### 🧰 Steps
@@ -83,8 +83,5 @@ This project aims to replicate the core functionalities of Instagram's backend. 
     node app.js
     ```
 
-
-
 ## 📜 License
 Distributed under the MIT License. See `LICENSE` for more information.
-
