@@ -5,7 +5,7 @@ const router = express.Router();
 const authController = require('../controllers/authControllers.js')
 //Middleware 
 //signup route 
-router.post('/createUser' , authController.createUser )
-router.post('/logIn' , authController.logInUser)
-router.get('/isLoggedIn' , authController.validateUserSession)
+router.post('/createUser' , authController.postUserCreation  )
+router.post('/logIn' , authController.postUserLogin )
+router.get('/isLoggedIn' , authController.getUserSessionStatus )
 module.exports = router

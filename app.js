@@ -6,15 +6,18 @@ const express = require("express");
 const pgSession = require("connect-pg-simple")(session);
 const pgPool = require("./config/database");
 const cors = require("cors");
-const {checkSignIn} = require('./middlewares/checkSignIn.js')
-
+const { checkSignIn } = require("./middlewares/checkSignIn.js");
+const path = require("path");
 
 // initialize express app
 const app = express();
 // Require Routes (Functionality-Based Routing (e.g., /auth/login, /posts/create))
 const authRoutes = require("./routes/authRoutes");
-const profileRoutes = require('./routes/profileRoutes')
+const profileRoutes = require("./routes/profileRoutes");
+const postsRoutes = require("./routes/postsRoutes");
+const followRoutes = require("./routes/followRoutes") 
 
+app.use("/posts", express.static(path.join(__dirname, "uploads/posts")));
 app.use(
   cors({
     origin: "http://localhost:3000", // replace with your frontend application's URL
@@ -22,7 +25,7 @@ app.use(
   })
 );
 app.use(express.json());
-//sessions 
+//sessions
 app.use(
   session({
     store: new pgSession({
@@ -35,9 +38,10 @@ app.use(
     cookie: { secure: false }, // Use 'true' if your app runs on HTTPS
   })
 );
-app.use("/auth" ,authRoutes);
-app.use('/profile' , profileRoutes)
-
+app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
+app.use("/posts", postsRoutes);
+app.use('/follow' ,followRoutes )
 PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

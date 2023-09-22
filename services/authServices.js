@@ -8,16 +8,16 @@
 
     const hashedPassword = await hashPassword(userData.password);
     userData.password = hashedPassword;
-    const userCreated = await UserModel.createUser(userData);
+    const userCreated = await UserModel.insertUser(userData);
     return { isSuccess: true, userCreated };
   };
   const authenticateUser = async (userName, password) => {
-    const user = await UserModel.findByUserName(userName);
+    const user = await UserModel.selectUserByUserName(userName);
     if (!user.length) return { isSuccess: false, errorMessage: "User not found" };
     const isMatch = await passwordsMatch(password, user[0].password);
     if (isMatch) {
 
-      return { isSuccess: true  };
+      return { isSuccess: true , user : user[0] };
 
     } else return { isSuccess: false, errorMessage: "Invalid Password" };
   };

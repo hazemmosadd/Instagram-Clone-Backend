@@ -4,6 +4,6 @@ const router = express.Router()
 const profileControllers = require('../controllers/profileControllers')
 
 
-router.get('/' , checkSignIn , profileControllers.getMyProfileData) 
-router.get('/avatar' ,checkSignIn ,  profileControllers.getMyProfileAvatar)
+router.get('/:username' , checkSignIn , profileControllers.getProfileData) 
+router.get('/avatar/:username' ,checkSignIn ,  profileControllers.getProfileAvatar)
 module.exports = router 

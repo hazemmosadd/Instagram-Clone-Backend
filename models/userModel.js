@@ -3,7 +3,7 @@
 const { executeQuery } = require("../utils/dbPool");
 
 class UserModel {
-  static async createUser(userData) {
+  static async insertUser(userData) {
     const { userName, fullName, email, phoneNumber, password } = userData;
 
     const query = `INSERT INTO users (username, fullname, email, phone, password) 
@@ -14,15 +14,15 @@ class UserModel {
     return res[0];
   }
 
-  static async findByUserName(userName) {
+  static async selectUserByUserName(userName) {
     const query = `SELECT * FROM users WHERE username = $1 `;
     const values = [userName];
     const res = await executeQuery(query, values);
     return res;
   }
 
-  static findProfileDataByUsername = async (userName) => {
-    const query = `SELECT id, username, bio, avatar, fullname,
+  static selectProfileDataByUserName = async (userName) => {
+    const query = `SELECT id, username, bio, fullname,private , 
     (SELECT count(*) FROM followers WHERE followers.followed_id = users.id) AS followers,
     (SELECT count(*) FROM followers WHERE followers.follower_id = users.id) AS following,
     (SELECT count(*) FROM posts WHERE posts.user_id = users.id) AS posts
@@ -34,14 +34,20 @@ class UserModel {
     return res;
   };
 
-  static findUserAvatar = async (userName) => {
+  static selectAvatarByUserName = async (userName) => {
     const query = `SELECT avatar from users WHERE username = $1`;
     const values = [userName];
     const res = await executeQuery(query, values);
-    console.log(res);
     return res;
   };
 
+  static selectUserProfileStatus = async (userName) => {
+    console.log("heey");
+    const query = "select private from users where username = $1";
+    const values = [userName];
+    const res = await executeQuery(query, values);
+    return res;
+  };
 }
 
 module.exports = UserModel;

@@ -4,10 +4,10 @@
 // bad request validation is nessecary even if its going to happen in the front end
 
 const authServices = require("../services/authServices");
-const HTTP_STATUS_CODES = require('../config/statusCodes');
+const HTTP_STATUS_CODES = require("../config/statusCodes");
 
-
-const createUser = async (req, res) => {
+//create Account
+const postUserCreation = async (req, res) => {
   try {
     const result = await authServices.createUser(req.body);
     if (result.isSuccess) {
@@ -20,15 +20,15 @@ const createUser = async (req, res) => {
   }
 };
 
-const logInUser = async (req, res) => {
-  console.log(req.session);
+// logInUser
+const postUserLogin = async (req, res) => {
   try {
     const result = await authServices.authenticateUser(req.body.userName, req.body.password);
     if (result.isSuccess) {
-      console.log(req.session);
-      req.session.userName = req.body.userName;
-      console.log(req.session);
-      return res.status(HTTP_STATUS_CODES.OK).json({ success: true, message: "User authenticated" });
+      req.session.userName = result.user.username;
+      req.session.userId = result.user.id;
+
+      return res.status(HTTP_STATUS_CODES.OK).json({ success: true, username: req.session.userName, message: "User authenticated" });
     } else {
       return res.status(HTTP_STATUS_CODES.UNAUTHORIZED).json({
         success: false,
@@ -40,12 +40,13 @@ const logInUser = async (req, res) => {
   }
 };
 
-const validateUserSession = (req, res) => {
+//validateUserSession
+const getUserSessionStatus = (req, res) => {
   if (req.session.userName) {
-    return res.status(HTTP_STATUS_CODES.OK).json({ isLoggedIn: true });
+    return res.status(HTTP_STATUS_CODES.OK).json({ success: true, isLoggedIn: true, username: req.session.userName });
   } else {
-    return res.status(HTTP_STATUS_CODES.OK).json({ isLoggedIn: false });
+    return res.status(HTTP_STATUS_CODES.OK).json({ success: true, isLoggedIn: false });
   }
 };
 
-module.exports = { createUser, logInUser , validateUserSession  };
+module.exports = { postUserCreation, postUserLogin, getUserSessionStatus };
